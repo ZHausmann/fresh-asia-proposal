@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Asia × Brno — Market Entry Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-2: #4a4a46;
+    --ink-3: #8a8a84;
+    --paper: #faf8f3;
+    --paper-2: #f2efe8;
+    --paper-3: #e8e4da;
+    --accent: #c84b2f;
+    --accent-light: #f5e8e4;
+    --gold: #b87c3a;
+    --gold-light: #f7f0e5;
+    --teal: #1a6b5a;
+    --teal-light: #e4f0ec;
+    --border: rgba(26,26,24,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 15px; line-height: 1.65; }
+
+  .hero { background: var(--ink); color: var(--paper); padding: 80px 60px 72px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 360px; height: 360px; border-radius: 50%; border: 60px solid rgba(200,75,47,0.15); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: 10%; width: 240px; height: 240px; border-radius: 50%; border: 40px solid rgba(184,124,58,0.12); pointer-events: none; }
+  .hero-label { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; font-weight: 500; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 56px); line-height: 1.1; color: var(--paper); max-width: 700px; margin-bottom: 24px; }
+  .hero h1 em { font-style: italic; color: #f0c98a; }
+  .hero-sub { font-size: 17px; color: rgba(250,248,243,0.65); max-width: 520px; line-height: 1.6; margin-bottom: 40px; }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { background: rgba(250,248,243,0.08); border: 0.5px solid rgba(250,248,243,0.2); border-radius: 100px; padding: 6px 14px; font-size: 12px; color: rgba(250,248,243,0.75); white-space: nowrap; }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+  section { padding: 64px 0; border-bottom: 0.5px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 10px; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: 30px; line-height: 1.2; margin-bottom: 8px; color: var(--ink); }
+  .section-intro { color: var(--ink-2); font-size: 16px; max-width: 580px; margin-bottom: 40px; line-height: 1.65; }
+
+  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; margin-bottom: 40px; }
+  .stat { background: var(--paper); padding: 28px 24px; text-align: center; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 34px; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-size: 12px; color: var(--ink-3); line-height: 1.4; }
+
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .why-card { background: var(--paper-2); border-radius: 10px; padding: 20px; }
+  .why-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--accent); margin-bottom: 4px; display: block; }
+  .why-label { font-size: 13px; color: var(--ink-2); line-height: 1.5; }
+
+  .comp-box { margin-top: 32px; border: 0.5px solid var(--border); border-radius: 12px; overflow: hidden; }
+  .comp-header { padding: 14px 20px; background: var(--paper-2); border-bottom: 0.5px solid var(--border); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  .comp-cols { display: grid; grid-template-columns: 1fr 1fr; }
+  .comp-col { padding: 20px; }
+  .comp-col:first-child { border-right: 0.5px solid var(--border); }
+  .comp-col-title { font-size: 12px; font-weight: 500; margin-bottom: 12px; }
+  .comp-col-title.teal { color: var(--teal); }
+  .comp-item { font-size: 12px; color: var(--ink-2); line-height: 1.55; padding-left: 12px; border-left: 2px solid var(--paper-3); margin-bottom: 10px; }
+  .comp-item.teal { border-left-color: var(--teal); }
+  .comp-item strong { color: var(--ink); font-weight: 500; }
+
+  .roadmap { display: flex; flex-direction: column; }
+  .road-item { display: grid; grid-template-columns: 80px 1fr; gap: 24px; padding: 28px 0; border-bottom: 0.5px solid var(--border); position: relative; }
+  .road-item:last-child { border-bottom: none; }
+  .road-item::before { content: ''; position: absolute; left: 39px; top: 52px; bottom: -1px; width: 1px; background: var(--border); }
+  .road-item:last-child::before { display: none; }
+  .road-num { width: 36px; height: 36px; border-radius: 50%; background: var(--paper-2); border: 0.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--ink-2); flex-shrink: 0; position: relative; z-index: 1; margin-top: 2px; justify-self: center; }
+  .road-phase { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; font-weight: 500; }
+  .road-title { font-weight: 500; font-size: 16px; margin-bottom: 6px; }
+  .road-body { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin-bottom: 12px; }
+  .road-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  .tag { font-size: 11px; padding: 3px 10px; border-radius: 100px; font-weight: 400; }
+  .tag.teal { background: var(--teal-light); color: var(--teal); }
+  .tag.gold { background: var(--gold-light); color: var(--gold); }
+  .tag.red { background: var(--accent-light); color: var(--accent); }
+  .tag.gray { background: var(--paper-2); color: var(--ink-2); border: 0.5px solid var(--border); }
+
+  .factory-grid { display: flex; flex-direction: column; gap: 12px; }
+  .factory-card { background: var(--paper); border: 0.5px solid var(--border); border-radius: 12px; padding: 20px 24px; display: grid; grid-template-columns: 56px 1fr auto; gap: 16px; align-items: start; }
+  .factory-card.c-teal { border-left: 3px solid var(--teal); }
+  .factory-card.c-red   { border-left: 3px solid var(--accent); background: #fffcfb; }
+  .factory-card.c-gray  { border-left: 3px solid var(--ink-3); }
+  .factory-rank { text-align: center; }
+  .rank-label { font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); display: block; }
+  .rank-badge { font-family: 'DM Serif Display', serif; font-size: 22px; display: block; line-height: 1; margin-top: 2px; color: var(--ink); }
+  .factory-name { font-weight: 500; font-size: 15px; margin-bottom: 2px; }
+  .factory-location { font-size: 12px; color: var(--ink-3); margin-bottom: 8px; }
+  .factory-pitch { font-size: 13px; color: var(--ink-2); line-height: 1.5; margin-bottom: 8px; }
+  .factory-right { text-align: right; white-space: nowrap; }
+  .dist-badge { font-size: 12px; font-weight: 500; color: var(--ink-2); display: block; margin-bottom: 4px; }
+  .match-label { font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  .callout { margin-top: 10px; padding: 10px 14px; border-radius: 8px; font-size: 12px; line-height: 1.55; }
+  .callout.note { background: var(--paper-2); border-left: 2px solid var(--border); color: var(--ink-3); }
+  .callout strong { font-weight: 500; }
+
+  .import-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .import-table th { text-align: left; padding: 10px 14px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); border-bottom: 0.5px solid var(--border); font-weight: 500; }
+  .import-table td { padding: 12px 14px; border-bottom: 0.5px solid var(--border); vertical-align: top; color: var(--ink-2); line-height: 1.5; }
+  .import-table td:first-child { font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .import-table tr:last-child td { border-bottom: none; }
+  .ok { color: var(--teal); font-weight: 500; }
+
+  .footer { text-align: center; padding: 32px 40px; font-size: 12px; color: var(--ink-3); border-top: 0.5px solid var(--border); }
+  .footer a { color: var(--ink-3); text-decoration: none; }
+  .footer a:hover { color: var(--ink-2); }
+
+  @media (max-width: 640px) {
+    .hero { padding: 48px 24px; }
+    .wrap { padding: 0 20px; }
+    .stats-row { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr 1fr; }
+    .comp-cols { grid-template-columns: 1fr; }
+    .comp-col:first-child { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .factory-card { grid-template-columns: 1fr; }
+    .factory-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+  <div style="max-width: 900px; margin: 0 auto; position: relative; z-index: 1;">
+    <p class="hero-label">Market Entry Proposal · Czech Republic</p>
+    <h1>Bringing Fresh Asia<br>to <em>Central Europe</em></h1>
+    <p class="hero-sub">A partnership proposal to bring Fresh Asia's fresh noodles, rice products, and steamed buns to the Czech and broader CEE market through local production and HoReCa distribution.</p>
+    <div class="hero-chips">
+    </div>
+  </div>
+</header>
+
+<!-- OPPORTUNITY -->
+<section>
+  <div class="wrap">
+    <p class="section-label">The opportunity</p>
+    <h2>A market with real potential</h2>
+    <p class="section-intro">Asian food is the fastest-growing ethnic food segment in Europe. The Czech market has established producers of pre-cooked, shelf-stable wheat noodles — but fresh/chilled rice noodles, rice sheets, and chilled bao buns remain an open category with no identified commercial-scale local producer.</p>
+
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">€18.4B</div>
+        <div class="stat-label">European ethnic food market<br>by 2033 (7.6% annual growth)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">36.7%</div>
+        <div class="stat-label">Chinese/Asian cuisine's share<br>of European ethnic food market</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Gap</div>
+        <div class="stat-label">Fresh/chilled rice noodles, rice sheets &amp; bao buns — no identified Czech producer at commercial scale</div>
+      </div>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-num">90,000+</span>
+        <span class="why-label">Students in Brno — adventurous, trend-forward, frequent restaurant-goers</span>
+      </div>
+      <div class="why-card">
+        <span class="why-num">90 min</span>
+        <span class="why-label">By car to Vienna, Prague, and Bratislava — Brno is an ideal base for a pilot that can expand directly to Poland, Slovakia, Hungary, and Austria</span>
+      </div>
+      <div class="why-card">
+        <span class="why-num">41+</span>
+        <span class="why-label">Asian restaurants in Brno alone — a strong and growing HoReCa client base with limited local fresh-product suppliers</span>
+      </div>
+      <div class="why-card">
+        <span class="why-num">Lower</span>
+        <span class="why-label">Operating costs vs. Western Europe — production and labour meaningfully cheaper than Germany or the Netherlands</span>
+      </div>
+      <div class="why-card">
+        <span class="why-num">Top 10</span>
+        <span class="why-label">Czech Republic ranks 10th on the 2025 International Tax Competitiveness Index — one of Europe's most business-friendly tax environments, with a 21% corporate rate and 12% VAT on food</span>
+      </div>
+      <div class="why-card">
+        <span class="why-num">Hub</span>
+        <span class="why-label">A validated Czech operation can serve as the production and distribution hub for the broader CEE region from a single base</span>
+      </div>
+    </div>
+
+    <!-- COMPETITIVE LANDSCAPE -->
+    <div class="comp-box">
+      <div class="comp-header">Competitive landscape — honest picture</div>
+      <div class="comp-cols">
+        <div class="comp-col">
+          <p class="comp-col-title">What already exists locally</p>
+          <div class="comp-item">
+            <strong>Fushou Food</strong> — Czech-based producer of pre-cooked wheat noodles (Ramen, Udon, Soba, Egg, Flat, Planed). HACCP certified, ~20,000 tonnes/year, distributes to 30+ countries. All products are shelf-stable at room temperature — not a chilled or fresh range.
+          </div>
+          <div class="comp-item">
+            <strong>VIMIXA, a.s.</strong> — Czech producer of pre-cooked wheat noodles since 2000, 15km from Brno. Supplies Tesco, Albert, Globus, Lidl, Rohlik.cz, COOP, and JIP. Dry/pre-cooked products only — no fresh or chilled range identified.
+          </div>
+          <div class="comp-item">
+            <strong>Sapa Market (Prague)</strong> — Small-scale daily fresh rice noodles for the local Vietnamese community. No retail or HoReCa-scale distribution.
+          </div>
+        </div>
+        <div class="comp-col">
+          <p class="comp-col-title teal">Where Fresh Asia is differentiated</p>
+          <div class="comp-item teal">
+            <strong>Fresh/chilled rice noodles &amp; rice sheets</strong> — no identified Czech manufacturer at commercial scale.
+          </div>
+          <div class="comp-item teal">
+            <strong>Chilled bao buns</strong> — existing options are frozen only. No chilled, preservative-free bao bun at retail or HoReCa scale in the Czech market.
+          </div>
+          <div class="comp-item teal">
+            <strong>75-day shelf life, preservative-free</strong> — Fresh Asia's patented packaging process is not replicated by any identified local competitor.
+          </div>
+          <div class="comp-item teal">
+            <strong>Western-palate adaptation</strong> — products developed specifically for European taste and portioning, not Asian formats imported as-is.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Go-to-market plan</p>
+    <h2>Two phases to local production</h2>
+    <p class="section-intro">A direct path to a factory partnership — using a small sample import primarily to validate the product with potential manufacturing partners before entering a license agreement.</p>
+
+    <div class="roadmap">
+      <div class="road-item">
+        <div class="road-num">1</div>
+        <div>
+          <p class="road-phase">Months 1–6 · Validation</p>
+          <p class="road-title">Bring samples — approach factory partners directly</p>
+          <p class="road-body">Import a small quantity of Fresh Asia products from Israel — primarily to present at factory partner meetings. The goal of this phase is to put the physical product in front of decision-makers at RACIO, JAPAVO, and SVOBODA, and to demonstrate the quality gap between what they currently produce and what Fresh Asia's technology enables. The primary audience for the samples is the factories, not restaurants. Any HoReCa clients willing to trial the product during this phase provide useful supporting evidence but are secondary to the factory pitch.</p>
+          <div class="road-tags">
+          </div>
+        </div>
+      </div>
+      <div class="road-item">
+        <div class="road-num">2</div>
+        <div>
+          <p class="road-phase">Months 6–18 · Local production</p>
+          <p class="road-title">License agreement + factory integration</p>
+          <p class="road-body">Negotiate a technology license or contract manufacturing agreement with a certified factory partner. Fresh Asia's technical team installs and integrates the production line. Local production begins under Fresh Asia's quality standards — eliminating import logistics entirely and opening the door to HoReCa supply and retail distribution at scale.</p>
+          <div class="road-tags">
+          </div>
+        </div>
+      </div>
+      <div class="road-item">
+        <div class="road-num">3</div>
+        <div>
+          <p class="road-phase">Year 2+ · Regional expansion</p>
+          <p class="road-title">Retail channels + CEE scale-up</p>
+          <p class="road-body">If local production proves out, the Czech operation becomes the launchpad for entering Czech retail (Albert, Kaufland, Billa) and expanding distribution to Prague, Vienna, Bratislava, and Warsaw. A validated model here is directly replicable across the CEE region.</p>
+          <div class="road-tags">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTORIES -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Factory partners</p>
+    <h2>Five facilities identified — to be validated</h2>
+    <p class="section-intro">The core strategy is to bring Fresh Asia's production line technology to an existing certified food manufacturer. Four facilities within 60km of Brno have been identified as strong candidates, with a fifth as a longer-term scale play.</p>
+
+    <div class="factory-grid">
+
+      <div class="factory-card c-teal">
+        <div class="factory-rank">
+          <span class="rank-label">Priority</span>
+          <span class="rank-badge">①</span>
+        </div>
+        <div>
+          <div class="factory-name">RACIO, s.r.o.</div>
+          <div class="factory-location">Břeclav · 50km from Brno</div>
+          <div class="factory-pitch">Rice-based food manufacturer since 1990. Most products already gluten-free and rice-derived — the strongest natural overlap with Fresh Asia's rice noodles and clean-label positioning. Holds ISO 9001, IFS, and BRC certifications. The pitch: rice is already their core raw material, the certifications are in place, and Fresh Asia's fresh rice noodle line is a natural product extension, not a departure.</div>
+          <div class="road-tags">
+            <span class="tag teal">Rice products</span>
+            <span class="tag teal">Gluten-free certified</span>
+            <span class="tag teal">ISO 9001 · IFS · BRC</span>
+          </div>
+        </div>
+        <div class="factory-right">
+          <span class="dist-badge">Best fit</span>
+         
+        </div>
+      </div>
+
+      <div class="factory-card c-teal">
+        <div class="factory-rank">
+          <span class="rank-label">Priority</span>
+          <span class="rank-badge">②</span>
+        </div>
+        <div>
+          <div class="factory-name">JAPAVO, spol. s r.o.</div>
+          <div class="factory-location">Slušovice · 55km from Brno</div>
+          <div class="factory-pitch">One of Central Europe's largest pasta manufacturers, founded 1993. Produces private-label noodles for clients in 8 countries. Fully automated with robotic packaging. Already has the private-label mindset critical for a licensing partnership. Note: currently produces dry pasta — fresh/chilled would be a new category requiring additional cold-chain infrastructure.</div>
+          <div class="road-tags">
+            <span class="tag gold">Noodle expertise</span>
+            <span class="tag gold">Private label ready</span>
+            <span class="tag gold">CEE distribution</span>
+          </div>
+        </div>
+        <div class="factory-right">
+          <span class="dist-badge">Strong fit</span>
+
+        </div>
+      </div>
+
+      <div class="factory-card" style="border-left: 3px solid var(--gold);">
+        <div class="factory-rank">
+          <span class="rank-label">Priority</span>
+          <span class="rank-badge">③</span>
+        </div>
+        <div>
+          <div class="factory-name">SVOBODA — výroba knedlíků</div>
+          <div class="factory-location">Blučina · 20km from Brno</div>
+          <div class="factory-pitch">Specialises in chilled dough-based products — structurally very similar to steamed bao buns. Already operating in the chilled category, meaning cold-chain infrastructure is in place. Supplies Albert, Kaufland, Lidl, Tesco, and Globus. HACCP, ISO, and IFS certified. Their existing retail relationships are a potential fast-track to Czech supermarket shelves for bao buns specifically.</div>
+          <div class="road-tags">
+            <span class="tag red">Bao bun fit</span>
+            <span class="tag red">Albert · Kaufland · Lidl</span>
+            <span class="tag red">Already chilled</span>
+            <span class="tag red">HACCP · ISO · IFS</span>
+          </div>
+        </div>
+        <div class="factory-right">
+          <span class="dist-badge">Good fit</span>
+       
+        </div>
+      </div>
+
+      <div class="factory-card c-red">
+        <div class="factory-rank">
+          <span class="rank-label">Consider</span>
+          <span class="rank-badge" style="color: var(--accent);">④</span>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 2px;">
+            <div class="factory-name">VIMIXA, a.s.</div>
+          
+          </div>
+          <div class="factory-location">Telnice u Brna · 15km from Brno — closest of all</div>
+          <div class="factory-pitch">Founded in 2000 specifically to produce Asian pre-cooked wheat noodles for the Czech and European market. Supplies Makro, Tesco, Albert, Globus, Lidl, Rohlik.cz, COOP, and JIP. Products are dry/shelf-stable — not fresh or chilled. The pitch here differs from the others: not "add a new product line" but "upgrade what you already do." Fresh Asia's technology could give them 75-day preservative-free shelf life and a premium clean-label positioning they currently lack.</div>
+          <div class="road-tags">
+            <span class="tag red">Asian noodles already</span>
+            <span class="tag red">All major Czech retailers</span>
+            <span class="tag red">15km from Brno</span>
+            <span class="tag red">20+ years experience</span>
+          </div>
+          <div class="callout note">
+            <strong>Note:</strong> A partial facility closure was recorded by Czech food inspectors in 2022 (pest hygiene issue). Current certification status to be verified via szpi.gov.cz before formal approach.
+          </div>
+        </div>
+        <div class="factory-right">
+          
+         
+        </div>
+      </div>
+
+      <div class="factory-card c-gray">
+        <div class="factory-rank">
+          <span class="rank-label">Scale</span>
+          <span class="rank-badge">⑤</span>
+        </div>
+        <div>
+          <div class="factory-name">CEREALIS a.s. (formerly Europasta)</div>
+          <div class="factory-location">Litovel · 100km from Brno</div>
+          <div class="factory-pitch">Largest pasta manufacturer in Central Europe. 100,000 tonnes/year capacity. Major private-label supplier to fast-growing retail chains across the CEE region. Portuguese-owned since 2024, meaning longer corporate decision timelines. Best approached after local proof-of-concept is established — for regional scale-up, not initial entry.</div>
+          <div class="road-tags">
+            <span class="tag gray">Scale-up partner</span>
+            <span class="tag gray">100k tonnes/year</span>
+            <span class="tag gray">CEE retail chains</span>
+          </div>
+        </div>
+        <div class="factory-right">
+          <span class="dist-badge">Phase 3</span>
+          <span class="match-label">Scale play</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: 20px; padding: 18px 20px; background: var(--gold-light); border-radius: 10px; border-left: 3px solid var(--gold);">
+      <p style="font-size: 12px; font-weight: 500; color: var(--gold); margin-bottom: 6px;">Note on Fushou Food</p>
+      <p style="font-size: 13px; color: var(--ink-2); line-height: 1.6;">Fushou Food (Malá Čermná 110, Čermná nad Orlicí) produces pre-cooked wheat noodles only — all products are shelf-stable and stored at room temperature. There is no chilled or fresh product range. As a large established competitor with significant scale and its own European distribution network, approaching them as a licensing partner is unlikely to be productive. The better path is through the smaller, more agile manufacturers above.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE IMPORT -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Logistics</p>
+    <h2>Sample import — feasible under standard EU rules</h2>
+    <p class="section-intro">Fresh Asia's core products are plant-based processed foods. These face no unusual import restrictions from Israel into the EU — though standard compliance requirements (labelling, customs documentation, food safety registration) apply as with any commercial import from a non-EU country.</p>
+
+    <table class="import-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>EU import status</th>
+          <th>Best method</th>
+          <th>Timeline</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rice noodles</td>
+          <td><span class="ok">✓ No special controls (plant-based processed)</span></td>
+          <td>DHL Express chilled or personal luggage</td>
+          <td>2–4 days courier / same day if carrying</td>
+        </tr>
+        <tr>
+          <td>Wheat / egg noodles</td>
+          <td><span class="ok">✓ Permitted (commercially processed egg)</span></td>
+          <td>DHL Express chilled or personal luggage</td>
+          <td>2–4 days courier / same day if carrying</td>
+        </tr>
+        <tr>
+          <td>Plain bao buns</td>
+          <td><span class="ok">✓ No special controls (plant-based processed)</span></td>
+          <td>DHL Express chilled or personal luggage</td>
+          <td>2–4 days courier / same day if carrying</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+ 
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  Prepared for Fresh Asia &nbsp;
+ 
