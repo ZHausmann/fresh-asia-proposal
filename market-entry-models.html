@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Market Entry Framework — Fresh Asia × Czech Republic</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a18;
+    --ink-2: #4a4a46;
+    --ink-3: #8a8a84;
+    --paper: #faf8f3;
+    --paper-2: #f2efe8;
+    --paper-3: #e8e4da;
+    --accent: #c84b2f;
+    --accent-light: #f5e8e4;
+    --gold: #b87c3a;
+    --gold-light: #f7f0e5;
+    --teal: #1a6b5a;
+    --teal-light: #e4f0ec;
+    --border: rgba(26,26,24,0.12);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--paper); color: var(--ink); font-size: 15px; line-height: 1.65; }
+
+  .hero { background: var(--ink); color: var(--paper); padding: 72px 60px 64px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; border-radius: 50%; border: 50px solid rgba(200,75,47,0.14); pointer-events: none; }
+  .hero-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; font-weight: 500; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(30px, 4vw, 48px); line-height: 1.1; color: var(--paper); max-width: 640px; margin-bottom: 18px; }
+  .hero h1 em { font-style: italic; color: #f0c98a; }
+  .hero-sub { font-size: 15px; color: rgba(250,248,243,0.6); max-width: 480px; line-height: 1.65; margin-bottom: 32px; }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { background: rgba(250,248,243,0.08); border: 0.5px solid rgba(250,248,243,0.18); border-radius: 100px; padding: 5px 12px; font-size: 11px; color: rgba(250,248,243,0.72); }
+
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 40px; }
+  section { padding: 60px 0; border-bottom: 0.5px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: 8px; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: 28px; line-height: 1.2; margin-bottom: 8px; }
+  .section-intro { color: var(--ink-2); font-size: 15px; max-width: 560px; margin-bottom: 36px; line-height: 1.65; }
+
+  /* MODEL CARDS */
+  .model-card { border: 0.5px solid var(--border); border-radius: 14px; overflow: hidden; margin-bottom: 20px; }
+  .model-card:last-child { margin-bottom: 0; }
+
+  .model-header { padding: 24px 28px; display: grid; grid-template-columns: auto 1fr auto; gap: 20px; align-items: center; cursor: pointer; }
+  .model-card.recommended .model-header { background: var(--ink); }
+  .model-num { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--ink-3); line-height: 1; }
+  .model-card.recommended .model-num { color: rgba(250,248,243,0.3); }
+  .model-info h3 { font-weight: 500; font-size: 18px; margin-bottom: 3px; }
+  .model-card.recommended .model-info h3 { color: var(--paper); }
+  .model-info .sub { font-size: 13px; color: var(--ink-2); }
+  .model-card.recommended .model-info .sub { color: rgba(250,248,243,0.55); }
+  .model-badge { font-size: 11px; padding: 4px 12px; border-radius: 100px; white-space: nowrap; font-weight: 500; }
+  .badge-rec { background: var(--accent); color: #fff; }
+  .badge-phase { background: var(--gold-light); color: var(--gold); }
+  .badge-scale { background: var(--paper-2); color: var(--ink-2); border: 0.5px solid var(--border); }
+
+  .model-body { padding: 28px; border-top: 0.5px solid var(--border); background: var(--paper); }
+
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .mg-block h4 { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; }
+  .mg-block p { font-size: 13px; color: var(--ink-2); line-height: 1.6; margin-bottom: 0; }
+  .mg-block ul { list-style: none; padding: 0; }
+  .mg-block ul li { font-size: 13px; color: var(--ink-2); line-height: 1.5; padding-left: 14px; position: relative; margin-bottom: 5px; }
+  .mg-block ul li::before { content: '—'; position: absolute; left: 0; color: var(--ink-3); }
+
+  /* COST ROW */
+  .cost-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 0.5px solid var(--border); border-radius: 10px; overflow: hidden; margin-bottom: 24px; }
+  .cs-cell { background: var(--paper-2); padding: 18px 16px; text-align: center; }
+  .cs-label { font-size: 10px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .cs-val { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+  .cs-note { font-size: 11px; color: var(--ink-3); }
+
+  /* PRO CON */
+  .pro-con { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .pc-block { border-radius: 8px; padding: 16px 18px; }
+  .pc-pros { background: var(--teal-light); }
+  .pc-cons { background: var(--accent-light); }
+  .pc-title { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 10px; }
+  .pc-pros .pc-title { color: var(--teal); }
+  .pc-cons .pc-title { color: var(--accent); }
+  .pc-block ul { list-style: none; padding: 0; }
+  .pc-block ul li { font-size: 12px; line-height: 1.5; padding-left: 14px; position: relative; margin-bottom: 5px; }
+  .pc-pros ul li::before { content: '+'; position: absolute; left: 0; color: var(--teal); font-weight: 600; }
+  .pc-cons ul li::before { content: '−'; position: absolute; left: 0; color: var(--accent); font-weight: 600; }
+  .pc-pros ul li { color: var(--teal); }
+  .pc-cons ul li { color: var(--accent); }
+
+  /* VARIANTS */
+  .variants { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .variant { background: var(--paper-2); border-radius: 8px; padding: 14px 16px; display: grid; grid-template-columns: auto 1fr; gap: 12px; }
+  .variant-label { font-size: 11px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+  .variant-desc { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+
+  /* CALLOUT */
+  .callout { padding: 16px 18px; border-radius: 10px; margin-bottom: 0; }
+  .callout.teal { background: var(--teal-light); border-left: 3px solid var(--teal); }
+  .callout.gold { background: var(--gold-light); border-left: 3px solid var(--gold); }
+  .callout.red { background: var(--accent-light); border-left: 3px solid var(--accent); }
+  .callout p { font-size: 13px; line-height: 1.6; margin: 0; }
+  .callout.teal p { color: var(--teal); }
+  .callout.gold p { color: var(--gold); }
+  .callout.red p { color: var(--accent); }
+  .callout strong { font-weight: 500; }
+
+  /* SUMMARY TABLE */
+  .sum-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .sum-table th { text-align: left; padding: 9px 12px; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); border-bottom: 0.5px solid var(--border); font-weight: 500; }
+  .sum-table td { padding: 11px 12px; border-bottom: 0.5px solid var(--border); color: var(--ink-2); vertical-align: top; font-size: 12px; }
+  .sum-table td:first-child { font-weight: 500; color: var(--ink); }
+  .sum-table tr:last-child td { border-bottom: none; }
+  .good { color: var(--teal); font-weight: 500; }
+  .mid  { color: var(--gold); font-weight: 500; }
+  .hard { color: var(--accent); font-weight: 500; }
+
+  @media (max-width: 640px) {
+    .hero { padding: 48px 24px; }
+    .wrap { padding: 0 20px; }
+    .model-header { grid-template-columns: auto 1fr; }
+    .model-badge { display: none; }
+    .model-grid { grid-template-columns: 1fr; }
+    .cost-strip { grid-template-columns: 1fr; }
+    .pro-con { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div style="max-width: 900px; margin: 0 auto; position: relative; z-index: 1;">
+    <p class="hero-label">Partnership Framework · Czech Republic & CEE</p>
+    <h1>Three Paths to <em>Local Production</em></h1>
+    <p class="hero-sub">A structured overview of how Fresh Asia's technology and products can be established in Central Europe — from a fast, low-risk factory partnership through to full ownership of a dedicated facility.</p>
+    <div class="hero-chips">
+      <span class="chip">Factory partnership</span>
+      <span class="chip">Greenfield build</span>
+      <span class="chip">Factory acquisition</span>
+      <span class="chip">CzechInvest incentives</span>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ MODEL A ══════════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Option 1 — Recommended entry path</p>
+    <h2>Factory Partnership</h2>
+    <p class="section-intro">Fresh Asia's technology installed in an existing certified manufacturer — the fastest, lowest-risk path to market with certifications and retail relationships already in place.</p>
+
+    <div class="model-card recommended">
+      <div class="model-header">
+        <div class="model-num">A</div>
+        <div class="model-info">
+          <h3>Technology License / Contract Manufacturing</h3>
+          <p class="sub">Fresh Asia's production line deployed inside an existing certified Czech food facility</p>
+        </div>
+        <div class="model-badge badge-rec">Recommended</div>
+      </div>
+      <div class="model-body">
+
+        <div class="cost-strip" style="margin-bottom: 24px;">
+          <div class="cs-cell">
+            <div class="cs-label">Fresh Asia capital required</div>
+            <div class="cs-val">€150K–€400K</div>
+            <div class="cs-note">Production line equipment only</div>
+          </div>
+          <div class="cs-cell">
+            <div class="cs-label">Time to first production</div>
+            <div class="cs-val">9–12 months</div>
+            <div class="cs-note">From agreement to commercial output</div>
+          </div>
+          <div class="cs-cell">
+            <div class="cs-label">Certifications needed</div>
+            <div class="cs-val">None</div>
+            <div class="cs-note">Already held by factory partner</div>
+          </div>
+        </div>
+
+        <div class="model-grid">
+          <div class="mg-block">
+            <h4>Partnership models available</h4>
+            <div class="variants">
+              <div class="variant">
+                <div class="variant-label">Technology License</div>
+                <div class="variant-desc">Factory pays a license fee per kg produced. Fresh Asia retains full IP. Factory sells under Fresh Asia brand. Most IP-protective arrangement.</div>
+              </div>
+              <div class="variant">
+                <div class="variant-label">Contract Manufacturing</div>
+                <div class="variant-desc">Factory produces to Fresh Asia's specification. Fresh Asia (or local partner) handles sales and distribution. Clean separation of manufacturing and brand.</div>
+              </div>
+              <div class="variant">
+                <div class="variant-label">Joint Venture</div>
+                <div class="variant-desc">Shared entity between Fresh Asia and factory partner. Aligns incentives most strongly. Higher legal complexity but shared risk and investment.</div>
+              </div>
+            </div>
+          </div>
+          <div class="mg-block">
+            <h4>What the factory partner brings</h4>
+            <ul>
+              <li>Existing HACCP, IFS, and/or BRC certifications</li>
+              <li>Facility space (200–500m² for initial line)</li>
+              <li>Trained labour force already in food production</li>
+              <li>Cold chain infrastructure (at SVOBODA)</li>
+              <li>Existing retail supply relationships (Albert, Kaufland, Lidl, Tesco)</li>
+              <li>Local market knowledge and supplier networks</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="model-grid">
+          <div class="mg-block">
+            <h4>Government incentives available</h4>
+            <p>If Fresh Asia's equipment investment exceeds ~€500K and creates local jobs, the Czech government's CzechInvest agency offers: corporate tax relief for up to 10 years; job creation grants of up to €12,000 per new position; training grants covering up to 70% of staff training costs; and cash grants on capital expenditure of up to 20% (South Moravia region). Investment incentives must be applied for before expenditure begins.</p>
+          </div>
+          <div class="mg-block">
+            <h4>Identified factory targets</h4>
+            <ul>
+              <li><strong>RACIO s.r.o.</strong> — Břeclav (50km). Rice-based, ISO/IFS/BRC certified. Best for rice noodles.</li>
+              <li><strong>JAPAVO spol. s r.o.</strong> — Slušovice (55km). Pasta manufacturer, private-label mindset. Best for wheat noodles.</li>
+              <li><strong>SVOBODA knedlíků</strong> — Blučina (20km). Chilled dough specialist, all major retail. Best for bao buns.</li>
+              <li><strong>VIMIXA a.s.</strong> — Telnice (15km). Existing Asian noodle producer — upgrade pitch.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="pro-con">
+          <div class="pc-block pc-pros">
+            <div class="pc-title">Advantages</div>
+            <ul>
+              <li>Fastest path to production (9–12 months)</li>
+              <li>Zero certification wait — already in place</li>
+              <li>Retail access via factory's existing supply agreements</li>
+              <li>Lowest capital requirement for Fresh Asia</li>
+              <li>No real estate or construction risk</li>
+              <li>Scalable — add lines or factories without asset commitment</li>
+              <li>Fresh Asia retains full IP ownership throughout</li>
+            </ul>
+          </div>
+          <div class="pc-block pc-cons">
+            <div class="pc-title">Considerations</div>
+            <ul>
+              <li>Production scheduling shared with factory's other lines</li>
+              <li>Margin shared with factory partner</li>
+              <li>Quality control relies partly on partner's systems</li>
+              <li>Technology IP is contractually protected but known to factory</li>
+              <li>Dependency on partner's continued cooperation</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MODEL B ══════════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Option 2 — Phase 3 consideration</p>
+    <h2>Build a New Facility</h2>
+    <p class="section-intro">A purpose-built facility gives maximum control and long-term margin — the right path if volumes justify it, typically after the partnership model has proven market demand.</p>
+
+    <div class="model-card">
+      <div class="model-header">
+        <div class="model-num">B</div>
+        <div class="model-info">
+          <h3>Greenfield or Leased Industrial Space</h3>
+          <p class="sub">A dedicated Fresh Asia facility — purpose-built or fitted out in leased industrial park space</p>
+        </div>
+        <div class="model-badge badge-phase">Phase 2–3</div>
+      </div>
+      <div class="model-body">
+
+        <div class="cost-strip" style="margin-bottom: 24px;">
+          <div class="cs-cell">
+            <div class="cs-label">Investment range</div>
+            <div class="cs-val">€460K–€4.5M+</div>
+            <div class="cs-note">Depending on scale (see below)</div>
+          </div>
+          <div class="cs-cell">
+            <div class="cs-label">Time to first production</div>
+            <div class="cs-val">18–42 months</div>
+            <div class="cs-note">Including certification timeline</div>
+          </div>
+          <div class="cs-cell">
+            <div class="cs-label">Certification wait</div>
+            <div class="cs-val">12–18 months</div>
+            <div class="cs-note">Before retail access is possible</div>
+          </div>
+        </div>
+
+        <div class="model-grid">
+          <div class="mg-block">
+            <h4>Investment by scale</h4>
+            <ul>
+              <li><strong>Small (500kg/day):</strong> €460K–€760K total Year 1 — facility fit-out €80–150K, production line €150–250K, certifications €30–60K, staff €120–180K/yr</li>
+              <li><strong>Medium (2t/day):</strong> €1.0M–€1.6M — production line €300–600K, fit-out €200–400K</li>
+              <li><strong>Large (5t+/day):</strong> €2.5M–€4.5M — full multi-line facility</li>
+            </ul>
+          </div>
+          <div class="mg-block">
+            <h4>Czech cost advantages</h4>
+            <ul>
+              <li>Industrial space: €4–7/m²/month vs. €10–18/m² in Germany</li>
+              <li>Manufacturing labour: ~€1,860/month avg vs. €3,400 in Germany</li>
+              <li>Corporate tax: 21% vs. 25–30% in Germany, Netherlands</li>
+              <li>CzechInvest grants: up to 20% cash grant on capital investment in South Moravian region</li>
+              <li>Tax relief: up to 10 years corporate income tax reduction</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout gold" style="margin-bottom: 20px;">
+          <p><strong>Recommended approach:</strong> Lease space in an existing industrial park near Brno (Slatina, Modřice, Šlapanice) rather than building from scratch. This reduces the construction timeline to 12–18 months instead of 24–42, and avoids land acquisition complexity. Industrial park rental in South Moravia is €4–7/m²/month — among the most competitive in Central Europe.</p>
+        </div>
+
+        <div class="pro-con">
+          <div class="pc-block pc-pros">
+            <div class="pc-title">Advantages</div>
+            <ul>
+              <li>Full operational control — production schedule, quality, priorities entirely Fresh Asia's</li>
+              <li>Maximum margin — no factory partner taking a cut</li>
+              <li>Builds a standalone asset (real balance sheet value)</li>
+              <li>Strongest CzechInvest incentive eligibility</li>
+              <li>Maximum IP protection — technology stays within Fresh Asia's own walls</li>
+              <li>Scalable without needing partner agreement</li>
+            </ul>
+          </div>
+          <div class="pc-block pc-cons">
+            <div class="pc-title">Considerations</div>
+            <ul>
+              <li>12–18 months to obtain retail certifications (IFS/BRC)</li>
+              <li>Full operational burden from day one — HR, logistics, compliance, QA</li>
+              <li>High fixed cost base before revenue is established</li>
+              <li>18–42 months before first production</li>
+              <li>Most appropriate after market demand is proven via Model A</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MODEL C ══════════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Option 3 — Accelerated ownership path</p>
+    <h2>Acquire an Existing Factory</h2>
+    <p class="section-intro">Buying a certified, operating food manufacturer gives the benefits of ownership — certifications, workforce, retail relationships — without the years-long wait to build them. The right acquisition compresses the timeline to full control significantly.</p>
+
+    <div class="model-card">
+      <div class="model-header">
+        <div class="model-num">C</div>
+        <div class="model-info">
+          <h3>M&A — Purchase a Certified Czech Food Manufacturer</h3>
+          <p class="sub">Acquire an existing IFS/BRC-certified facility and repurpose for Fresh Asia production</p>
+        </div>
+        <div class="model-badge badge-scale">Scale option</div>
+      </div>
+      <div class="model-body">
+
+        <div class="cost-strip" style="margin-bottom: 24px;">
+          <div class="cs-cell">
+            <div class="cs-label">Acquisition cost range</div>
+            <div class="cs-val">€800K–€5M+</div>
+            <div class="cs-note">EBITDA multiple 4–7x + production line</div>
+          </div>
+          <div class="cs-cell">
+            <div class="cs-label">Time to production</div>
+            <div class="cs-val">12–24 months</div>
+            <div class="cs-note">Including target search + deal close</div>
+          </div>
+          <div class="cs-cell">
+            <div class="cs-label">Certifications</div>
+            <div class="cs-val">Inherited</div>
+            <div class="cs-note">If target is already IFS/BRC certified</div>
+          </div>
+        </div>
+
+        <div class="model-grid">
+          <div class="mg-block">
+            <h4>What to look for in an acquisition target</h4>
+            <ul>
+              <li>IFS Food or BRC certified (required for Czech retail)</li>
+              <li>100–1,000 tonnes/year existing capacity</li>
+              <li>Dough-based, pasta, or rice-product manufacturing background</li>
+              <li>Within 150km of Brno</li>
+              <li>Existing cold chain infrastructure</li>
+              <li>Existing retail supply agreements (Albert, Kaufland, Lidl, etc.)</li>
+              <li>Owner approaching retirement or business in transition</li>
+            </ul>
+          </div>
+          <div class="mg-block">
+            <h4>How to find acquisition targets</h4>
+            <ul>
+              <li>M&A advisors specialising in CEE food sector (KPMG, Deloitte local offices, boutique Czech M&A firms)</li>
+              <li>Czech business registry (ares.cz) — search for food manufacturers in South Moravia</li>
+              <li>Direct approach to identified factory partners (RACIO, JAPAVO, SVOBODA) — even if not publicly for sale, ownership discussions can be initiated</li>
+              <li>CzechInvest brownfield database — lists former food facilities</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout teal" style="margin-bottom: 20px;">
+          <p><strong>Strategic note:</strong> The most elegant acquisition path may be to start with Model A — a factory partnership with RACIO or SVOBODA — and, once the production line is embedded and generating revenue, approach the factory owner about acquisition. At that point, both parties know each other well, the production line is already installed, and the price negotiation is grounded in real performance data rather than projections.</p>
+        </div>
+
+        <div class="pro-con">
+          <div class="pc-block pc-pros">
+            <div class="pc-title">Advantages</div>
+            <ul>
+              <li>Certifications inherited — skips 12–18 month wait</li>
+              <li>Workforce and operational knowledge acquired</li>
+              <li>Retail relationships may transfer with the business</li>
+              <li>Full control from acquisition date</li>
+              <li>Creates a real asset — standalone business with balance sheet value</li>
+              <li>Faster than greenfield if right target found</li>
+            </ul>
+          </div>
+          <div class="pc-block pc-cons">
+            <div class="pc-title">Considerations</div>
+            <ul>
+              <li>Requires full due diligence — legal, financial, environmental</li>
+              <li>Hidden liabilities possible (debt, audit issues, lease terms)</li>
+              <li>Right target must be found and available — takes 6–18 months</li>
+              <li>Integration complexity — blending two businesses takes time</li>
+              <li>Highest capital requirement</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COMPARISON ══════════ -->
+<section>
+  <div class="wrap">
+    <p class="section-label">Decision framework</p>
+    <h2>Side-by-Side Comparison</h2>
+    <p class="section-intro">The three models serve different stages of market maturity. The recommended path is sequential — start with the partnership model to prove demand, then escalate to ownership once the market is established.</p>
+
+    <table class="sum-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>A — Factory Partnership</th>
+          <th>B — Build New</th>
+          <th>C — Acquire</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Capital required (Fresh Asia)</td>
+          <td><span class="good">€150K–€400K</span></td>
+          <td><span class="hard">€460K–€4.5M+</span></td>
+          <td><span class="hard">€1M–€5M+</span></td>
+        </tr>
+        <tr>
+          <td>Time to production</td>
+          <td><span class="good">9–12 months</span></td>
+          <td><span class="hard">18–42 months</span></td>
+          <td><span class="mid">12–24 months</span></td>
+        </tr>
+        <tr>
+          <td>Certifications (IFS/BRC)</td>
+          <td><span class="good">Already in place</span></td>
+          <td><span class="hard">12–18 months to obtain</span></td>
+          <td><span class="good">Inherited with acquisition</span></td>
+        </tr>
+        <tr>
+          <td>Retail channel access</td>
+          <td><span class="good">Via factory's existing relationships</span></td>
+          <td><span class="hard">After IFS certification only</span></td>
+          <td><span class="mid">If acquired factory supplies retail</span></td>
+        </tr>
+        <tr>
+          <td>Operational control</td>
+          <td><span class="hard">Shared with factory partner</span></td>
+          <td><span class="good">Full</span></td>
+          <td><span class="good">Full</span></td>
+        </tr>
+        <tr>
+          <td>IP protection</td>
+          <td><span class="mid">Contractual (strong but shared)</span></td>
+          <td><span class="good">Maximum</span></td>
+          <td><span class="good">Maximum</span></td>
+        </tr>
+        <tr>
+          <td>Risk level</td>
+          <td><span class="good">Low — no asset commitment</span></td>
+          <td><span class="hard">Highest — full capital at risk</span></td>
+          <td><span class="mid">High — acquisition risk</span></td>
+        </tr>
+        <tr>
+          <td>CzechInvest incentive eligibility</td>
+          <td><span class="mid">Partial (equipment only)</span></td>
+          <td><span class="good">Strongest — full investment qualifies</span></td>
+          <td><span class="mid">Partial — depends on structure</span></td>
+        </tr>
+        <tr>
+          <td>Best suited for</td>
+          <td><span class="good">Market entry — now</span></td>
+          <td>Scale-up after market proven</td>
+          <td>Accelerated ownership if target available</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout teal" style="margin-top: 24px;">
+      <p><strong>Recommended sequence:</strong> Begin with Model A to establish market presence with minimum capital and maximum speed. Use the 2–3 years of partnership operation to build HoReCa clients, enter retail through the factory's existing supply agreements, and generate real Czech market revenue data. If volumes and demand justify it, pursue Model C (acquire the factory partner or an equivalent) or Model B (lease and build a dedicated facility). This approach minimises risk at each stage while preserving optionality at every step.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
